@@ -1,0 +1,35 @@
+<div id="popup-call" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+			<div class="popup__content">
+			<button data-close type="button" class="popup__close"><img src="../img/popup/close.png" alt="close"></button>
+			<div class="popup__details-block">
+				<div class="popup__title">Уже уходите? Задайте вопрос по открытию франшизы Not Vegan в своём городе</div>
+				<div class="popup__image">
+					<img src="../img/popup/phone.png" alt="phone">
+				</div>
+			</div>
+			<form class="popup__form form">
+				<div class="open-form__main">
+					<div class="input-phone"><input type="text" placeholder="+7 (___) ___ ____" class="open-form__input  open-form__input-phone"></div>
+					<div class="input-email">
+						<input 
+							data-validate 
+							data-required="email" 
+							data-error="e-mail не валидный"
+							type="email" 
+							placeholder="bestpartner@notvegan.ru" 
+							class="open-form__input ">
+					</div>
+					<div class="input-user"><input type="text" data-validate data-required="text" data-error="Поле не может быть пустым!" placeholder="Алексей Сотников" class="open-form__input "></div>
+					<button type="submit" class="open-form__button button">
+						<span>Получить консультацию<img src=".,/img/click-icon.png" alt="click"></span>
+					</button>
+				</div>
+				<div class="open-form__checkbox">
+					<input data-validate data-required="checkbox" data-error="Нужно подтвердить согласие!" class="checkbox" type="checkbox" name="agree1" id="agree1">
+					<label class="checkbox-label" for="agree1"><span>Я подтверждаю, что ознакомлен и даю согласие на обработку персональных данных на условиях и для целей, определяемых <a href="#"> Политикой конфиденциальности</a></span></label> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

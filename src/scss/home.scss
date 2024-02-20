@@ -1,0 +1,448 @@
+//====================================================================================================
+.page {
+    &__open {
+        min-height: 100vh;
+        height: 100%;
+        @media(min-width: $mobileSmall) {
+            background: url('../img/open/bg.png') 90% center/contain no-repeat;
+        }
+    }
+    &__achievements {
+        min-height: 100vh;
+        height: 100%;
+        position: relative;
+        @include adaptiveValue("padding-bottom", 150, 70);
+        background: url('../img/achievements/bg.png') center/cover no-repeat;
+        @media(max-width: $mobile) {
+            background: url('../img/achievements/bg.png') 30%/cover no-repeat;
+        }
+    }
+}
+.open {
+    &__container {
+        position: relative;
+    }
+    &__form {
+    }
+    &__title {
+    }
+    &__desc {
+        max-width: 900px;
+        line-height: 160%;
+        margin-bottom: 35px;
+        @include adaptiveValue("font-size", 18, 16);
+    }
+    &__tasks {
+        margin-bottom: 50px;
+    }
+    &__square {
+    }
+    &__find {
+        margin-bottom: 50px;
+    }
+}
+.open-form {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px auto;
+    box-shadow: 0 10px 25px #525252;
+    @media(min-width: $mobile) {
+        transform: translateY(-110px);
+    }
+    &__title {
+        font-weight: 600;
+        line-height: 160%;
+        text-align: center;
+        margin-bottom: 15px;
+        @media(max-width: $mobileSmall) {
+            line-height: 130%;
+        }
+    }
+    &__main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        @media(max-width: $mobile) {
+            flex-direction: column;
+        }
+    }
+    
+    &__input {
+        font-family: "Lato";
+        width: 100%;
+        background: #F4F4F4;
+        font-size: rem(16);
+        height: 80px;
+        border-radius: 5px;
+        padding-inline: 40px 15px;
+        display: flex;
+        align-items: center;
+        outline: none;
+        &::placeholder {
+            color: #AEAEAF;
+        }
+        
+    }
+    &__button {
+    }
+    &__checkbox {
+        color: #AEAEAF;
+        font-size: rem(14);
+        a {
+            text-decoration: underline;
+            @media(any-hover) {
+                &:hover {
+                    color: $accentColor;
+                    text-decoration: none;
+                }
+            }
+        };
+    }
+}
+
+.form__error {
+    position: absolute;
+    color: red;
+    font-weight: 600;
+    font-size: 20px;
+    z-index: 10;
+}
+
+.checkbox {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    &-label {
+        display: inline-flex;
+		align-items: center;
+		position: relative;
+		gap: 10px;
+        &:before {
+			content: "";
+			align-self: flex-start;
+			flex: 0 0 12px;
+			width: 12px;
+			height: 12px;
+			border: 1px solid #a7a9ac;
+		}
+    }
+    &:focus + .checkbox-label:before {
+        box-shadow: 0 0 1px #000;
+    }
+    &:checked + .checkbox-label:before {
+        background: url('../img/open/checked.png') center no-repeat;
+    }
+}
+
+.input-phone,
+.input-email,
+.input-user {
+    position: relative;
+    flex: 1 1 auto;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 15px;
+        top: calc(50% + 2px);
+        transform: translateY(-50%);
+    }
+    @media(max-width: $mobile) {
+        width: 100%;
+        max-width: 345px;
+    }
+}
+.input-phone::before {
+    background: url('../img/open/phone.png') center/contain no-repeat
+}
+.input-email::before {
+    background: url('../img/open/mail-icon.png') center/contain no-repeat
+}
+.input-user::before {
+    background: url('../img/open/user-icon.png') center/contain no-repeat
+}
+
+.open-title {
+    @include adaptiveValue("font-size", 40, 20);
+    font-weight: 700;
+    line-height: 130%;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    &__stars {
+        font-size: 0;
+        line-height: 0;
+        margin-bottom: 10px;
+    }
+    &__accent {
+        color: #D65B48
+    }
+}
+.open-tasks {
+    &__title {
+        background: linear-gradient(to right, #C39D65 33%, #EBC389 66%, #C39D65 100%);
+        color: #fff;
+        min-height: 53px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding-inline: 30px;
+        border-radius: 5px 5px 0 0;
+        width: fit-content;
+        margin-left: 20px;
+    }
+    &__body {
+        max-width: 750px;
+        background: linear-gradient(135deg, #4E4E4E, #2E2E2F);
+        padding: 10px 10px 35px;
+        border-radius: 10px;
+        @include adaptiveValue("font-size", 18, 16);
+    }
+    &__list {
+        border: 1px solid #5F5F64;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+        margin-bottom: 40px;
+        @media(max-width: $mobileSmall) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item {
+        color: #fff;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 25px 10px;
+        border: 1px solid #5F5F64;
+        &::before {
+            background: url('../img/open/list-icon.png');
+            content: '';
+            width: 12px;
+            height: 12px;
+            position: relative;
+            top: 7px;
+        }
+    }
+    &__text {
+        line-height: 160%;
+        display: flex;
+        flex-direction: column;
+        vertical-align: middle;
+        gap: 15px;
+        @media(max-width: $mobileSmall) {
+            gap: 5px;
+        }
+    }
+    &__bold {
+        font-weight: 700;
+    }
+    &__note {
+        font-weight: 600;
+        line-height: 160%;
+        color: #fff;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+
+    }
+}
+.open-square {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    bottom: 255px;
+    right: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FFF1DD, #C39D65);
+    z-index: 1;
+    &__wrapper {
+        background: #fff;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+    &__text {
+        font-size: rem(16);
+        line-height: 160%;
+    }
+    &__info {
+        font-size: rem(22);
+        font-weight: 600;
+        line-height: 130%;
+    }
+    @media(max-width: $pc) {
+        right: 0;
+        top: 180px;
+        z-index: -1;
+    }
+    @media(max-width: $mobile) {
+        display: none;
+    }
+}
+.open-find {
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #C6C6C6;
+    max-width: 750px;
+    padding: 23px 94px 23px 170px;
+    display: flex;
+    position: relative;
+    @include adaptiveValue("font-size", 18, 16);
+    &__image {
+        position: absolute;
+        left: 0;
+        @media(max-width: 640px) {
+            display: none;
+        }
+    }
+    &__text {
+        line-height: 160%;
+    }
+    &__title {
+        font-weight: 600;
+    }
+    &__content {
+    }
+    @media(max-width: 640px) {
+        padding: 15px;
+    }
+}
+
+//====================================================================================================
+
+.achievements {
+    &__container {
+    }
+    &__title {
+        @include adaptiveValue("padding-top", 100, 50);
+        max-width: 750px;
+        width: 100%;
+        text-transform: uppercase;
+        line-height: 130%;
+        @include adaptiveValue("font-size", 40, 20);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 25px;
+        &-accent {
+            color: $accentColor;
+        }
+    }
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        @media(max-width: $tablet) {
+            flex-direction: column;
+        }
+    }
+    &__founder {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex: 0 1 50%;
+        gap: 20px;
+    }
+    &__text {
+        color: #fff;
+        @include adaptiveValue("font-size", 18, 16);
+        line-height: 160%;
+    }
+    &__list-block {
+        width: 100%;
+        flex: 0 1 50%;
+        border-radius: 10px;
+        padding: 30px;
+        position: relative;
+        background: #fff;
+
+    }
+    &__list-title {
+        text-transform: uppercase;
+        color: #fff;
+        @include adaptiveValue("font-size", 18, 16);
+        line-height: 160%;
+        font-weight: 600;
+        margin-bottom: 20px;
+        width: fit-content;
+        min-height: 53px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 20px;
+        border-radius: 5px;
+        background: linear-gradient(to right, #C39D65 0%, #EBC389 50%, #C39D65 100%)
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    &__item {
+        @include adaptiveValue("font-size", 18, 16);
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        line-height: 160%;
+        @media(min-width: $mobileSmall) {
+            &::before {
+                content: '';
+                flex: 0 0 25px;
+                width: 25px;
+                height: 25px;
+                background: url('../img/achievements/list-icon.png') center/contain no-repeat;
+            }
+        }
+        
+    }
+    &__flag {
+        position: absolute;
+        top: -6px;
+        right: 30px;
+    }
+}
+.founder {
+    font-size: 16px;
+    &__name {
+        color: #fff;
+        background: linear-gradient(to right, #4E4E4E, #2E2E2F);
+        display: flex;
+        line-height: 160%;
+        flex-direction: column;
+        width: fit-content;
+        padding: 15px;
+        border-radius: 10px 10px 0 0;
+    }
+    &__review {
+        border-radius: 0 10px 10px 10px;
+        line-height: 160%;
+        background: #fff;
+        padding: 15px;
+        width: 100%;
+        max-width: 380px;
+        @media(min-width: $tablet) {
+            background: transparent;
+            backdrop-filter: blur(23px);
+        }
+    }
+}
